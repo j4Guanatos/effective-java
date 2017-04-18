@@ -59,8 +59,7 @@ Study group of the Effective Java book, with code samples
  <tr><td>Item 45: Minimize the scope of local variables</td><td>Luis</td></tr>
  <tr><td>Item 46: Prefer for-each loops to traditional for loops </td><td>&nbsp;</td></tr>
  <tr><td>Item 47: Know and use the libraries </td><td>&nbsp;</td></tr>
- <tr><td>Item 48: Avoid float and double if exact answers</td><td>&nbsp;</td></tr>
- <tr><td>are required </td><td>&nbsp;</td></tr>
+ <tr><td>Item 48: Avoid float and double if exact answers are required</td><td>&nbsp;</td></tr>
  <tr><td>Item 49: Prefer primitive types to boxed primitives </td><td>&nbsp;</td></tr>
  <tr><td>Item 50: Avoid strings where other types are more appropriate </td><td>Dionicio</td></tr>
  <tr><td>Item 51: Beware the performance of string concatenation </td><td>&nbsp;</td></tr>
