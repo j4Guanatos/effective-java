@@ -4,32 +4,25 @@ Chapter 3
 
 +++
 ### Items
-
 - Item 8: Obey the general contract when overriding `equals`
 - Item 9: Always override `hashCode` when you override `equals`
 - Item 10: Always override `toString`
 - Item 11: Override `clone` judiciously
 - Item 12: Consider implementing `Comparable`
-
 +++
 ### Item 8: Obey the general contract when overriding equals
-
 - The equals method implements an _equivalence relation._ It is:
 - _Reflexive_                `equals(x)==true`
 - _Symmetric_                `equals(y) == y.equals(x)`
 - _Transitive_                `equals(y)  == y.equals(z) == x.equals(z)`
 - _Consistent_                `x.equals(y) == x.equals(y) == x.equals(y)`
 - For any non-null reference value `x`, `equals(null)` must return `false`.
-
 +++
 ### Item 9: Always override `hashCode` when you override equals
-
 - You must override `hashCode` in every class that overrides equals
-
 - `hashCode` method must consistently return the same integer
 - equal objects must have equal hash codes
 - For two objects unequal according to the `equals(Object)` method, the `hashCode` method on each of the two objects may not produce distinct integer results.
-
 +++
 ### A good hash function
 - **Deterministic** — equal keys must produce the same hash value.
@@ -71,12 +64,9 @@ Chapter 3
 +++
 - It is not always sufficient to call clone recursively, might need to support a "deep copy" method
 - A fine approach to object copying is to provide a _copy constructor_ r _copy factory_.
-
 		public Yum(Yum yum);
 		public static Yum newInstance(Yum yum);
-
 - A copy constructor or factory can take an argument whose type is an interface implemented by the class, called _conversion constructors_ and _conversion factories_.
-
 		HashSet s;
 		TreeSet ts = new TreeSet(s).
 +++
@@ -85,20 +75,17 @@ Chapter 3
 - it permits order comparisons in addition to simple equality comparisons
 - it is generic
 		public interface Comparable<T> {
-
 		int compareTo(T t);
-
 		}
 +++
 - Returns a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.
 - Throws `ClassCastException` if the specified object's type prevents it from being compared to this object.
 - Classes that depend on comparison include
-** the sorted collections `TreeSet` and `TreeMap`
-** the utility classes `Collections`
-** and `Arrays`, which contain searching and sorting algorithms.
+  - the sorted collections `TreeSet` and `TreeMap`
+  - the utility classes `Collections`
+  - and `Arrays`, which contain searching and sorting algorithms.
 +++
 - If a class has multiple significant fields, the order in which you compare them is critical.
-
 		public int compareTo(PhoneNumber pn) {
 			// Compare area codes
 			if (areaCode < pn.areaCode)
