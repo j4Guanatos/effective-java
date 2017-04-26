@@ -11,7 +11,7 @@ Chapter 3
 - Item 12: Consider implementing `Comparable`
 +++
 ### Item 8: Obey the general contract when overriding equals
-- The equals method implements an _equivalence relation._ It is:
+The equals method implements an _equivalence relation._ It is:
 - _Reflexive_                `equals(x)==true`
 - _Symmetric_                `equals(y) == y.equals(x)`
 - _Transitive_                `equals(y)  == y.equals(z) == x.equals(z)`
@@ -53,13 +53,13 @@ Chapter 3
 - if you override the clone method in a nonfinal class, you should return an object obtained by invoking clone.
 - it must copy the internals of the object and call clone recursively on mutable objects:
 		@Override public Stack clone() {
-		try {
-		Stack result = (Stack) super.clone();
-		result.elements = elements.clone();
-		return result;
-		} catch (CloneNotSupportedException e) {
-		        throw new AssertionError();
-		}
+			try {
+				Stack result = (Stack) super.clone();
+				result.elements = elements.clone();
+				return result;
+			} catch (CloneNotSupportedException e) {
+				throw new AssertionError();
+			}
 		}
 +++
 - It is not always sufficient to call clone recursively, might need to support a "deep copy" method
@@ -89,13 +89,13 @@ Chapter 3
 		public int compareTo(PhoneNumber pn) {
 			// Compare area codes
 			if (areaCode < pn.areaCode)
-			return -1;
+				return -1;
 			if (areaCode > pn.areaCode)
-			return 1;
+				return 1;
 			// Area codes are equal, compare prefixes
 			if (prefix < pn.prefix)
-			return -1;
+				return -1;
 			if (prefix > pn.prefix)
-			return 1;
+				return 1;
 			return 0; // All fields are equal
 		}
