@@ -2,15 +2,18 @@
 
 Chapter 3
 
-## Items
+---
++++
+### Items
 
 - Item 8: Obey the general contract when overriding `equals`
 - Item 9: Always override `hashCode` when you override `equals`
 - Item 10: Always override `toString`
 - Item 11: Override `clone` judiciously
 - Item 12: Consider implementing `Comparable`
+
 ---
-## Item 8: Obey the general contract when overriding equals
+### Item 8: Obey the general contract when overriding equals
 
 - The equals method implements an _equivalence relation._ It is:
 - _Reflexive_                `equals(x)==true`
@@ -20,7 +23,7 @@ Chapter 3
 - For any non-null reference value `x`, `equals(null)` must return `false`.
 
 ---
-## Item 9: Always override `hashCode` when you override equals
+### Item 9: Always override `hashCode` when you override equals
 
 - You must override `hashCode` in every class that overrides equals
 
@@ -29,7 +32,7 @@ Chapter 3
 - For two objects unequal according to the `equals(Object)` method, the `hashCode` method on each of the two objects may not produce distinct integer results.
 
 ---
-## A good hash function
+### A good hash function
 - **Deterministic** — equal keys must produce the same hash value.
 
 - **Efficient** to compute.
@@ -37,7 +40,7 @@ Chapter 3
 - uniformly **distribute** the keys.
 
 ---
-## Item 10: Always override toString
+### Item 10: Always override toString
 
 - The returned string should be 
 >a concise but informative representation that is easy for a person to read.
@@ -47,9 +50,9 @@ Chapter 3
 - Provide programmatic access to all of the information contained in the value returned by `toString`
 
 ---
-## Item 11: Override clone judiciously
+### Item 11: Override clone judiciously
 
-- Object's clone method is `protected`
+- Object's `clone` method is `protected`
 - All classes that implement `Cloneable` should override clone with a public method whose return type is the class itself.
 - If a class implements `Cloneable`, Object's clone method returns a field-by-field copy of the object; otherwise it throws `CloneNotSupportedException`
 - Copying an object will typically entail creating a new instance of its class, but it may require copying of internal data structures as well.
@@ -95,7 +98,7 @@ Chapter 3
 		TreeSet ts = new TreeSet(s).
 
 ---
-## Item 12: Consider implementing Comparable
+### Item 12: Consider implementing Comparable
 
 - By implementing `Comparable`, a class indicates that its instances have a _natural ordering._
 - it permits order comparisons in addition to simple equality comparisons
