@@ -1,6 +1,8 @@
 # effective-java
 Study group of the Effective Java book, with code samples
 
+<a href="https://gitpitch.com/j4Guanatos/effective-java/master">Slides</a>
+
 ## AGENDA
 
 <table class="tableizer-table">
@@ -94,3 +96,8 @@ Study group of the Effective Java book, with code samples
  <tr><td>Item 77: For instance control, prefer enum types to readResolve </td><td>&nbsp;</td></tr>
  <tr><td>Item 78: Consider serialization proxies instead of serialized instances</td><td></td></tr>
 </tbody></table>
+
+
+
+# Links
+https://word-to-markdown.herokuapp.com/
