@@ -2,7 +2,6 @@
 
 Chapter 3
 
----
 +++
 ### Items
 
@@ -12,7 +11,7 @@ Chapter 3
 - Item 11: Override `clone` judiciously
 - Item 12: Consider implementing `Comparable`
 
----
++++
 ### Item 8: Obey the general contract when overriding equals
 
 - The equals method implements an _equivalence relation._ It is:
@@ -22,7 +21,7 @@ Chapter 3
 - _Consistent_                `x.equals(y) == x.equals(y) == x.equals(y)`
 - For any non-null reference value `x`, `equals(null)` must return `false`.
 
----
++++
 ### Item 9: Always override `hashCode` when you override equals
 
 - You must override `hashCode` in every class that overrides equals
@@ -31,7 +30,7 @@ Chapter 3
 - equal objects must have equal hash codes
 - For two objects unequal according to the `equals(Object)` method, the `hashCode` method on each of the two objects may not produce distinct integer results.
 
----
++++
 ### A good hash function
 - **Deterministic** — equal keys must produce the same hash value.
 
@@ -39,7 +38,7 @@ Chapter 3
 
 - uniformly **distribute** the keys.
 
----
++++
 ### Item 10: Always override toString
 
 - The returned string should be 
@@ -49,7 +48,7 @@ Chapter 3
 - Decide whether to specify the format of the return value (for _value classes_), and clearly document your intentions.
 - Provide programmatic access to all of the information contained in the value returned by `toString`
 
----
++++
 ### Item 11: Override clone judiciously
 
 - Object's `clone` method is `protected`
@@ -86,7 +85,7 @@ Chapter 3
 
 - It is not always sufficient to call clone recursively, might need to support a &quot;deep copy&quot; method
 
----
++++
 - A fine approach to object copying is to provide a _copy constructor_ r _copy factory_.
 
 		public Yum(Yum yum);
@@ -97,7 +96,7 @@ Chapter 3
 		HashSet s;
 		TreeSet ts = new TreeSet(s).
 
----
++++
 ### Item 12: Consider implementing Comparable
 
 - By implementing `Comparable`, a class indicates that its instances have a _natural ordering._
