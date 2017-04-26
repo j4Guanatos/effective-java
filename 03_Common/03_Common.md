@@ -46,9 +46,9 @@ Chapter 3
 - Copying an object will typically entail creating a new instance of its class, but it may require copying of internal data structures as well.
 - Incompatible with normal use of final fields referring to mutable objects
 - not absolute requirements:
-** `clone() != x == true`
-** `(x.clone().getClass() == x.getClass()) == true`
-** `clone().equals(x) == true`
+  - `clone() != x == true`
+  - `(x.clone().getClass() == x.getClass()) == true`
+  - `clone().equals(x) == true`
 +++
 - if you override the clone method in a nonfinal class, you should return an object obtained by invoking clone.
 - it must copy the internals of the object and call clone recursively on mutable objects:
