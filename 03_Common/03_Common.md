@@ -45,6 +45,7 @@ Chapter 3
 >a concise but informative representation that is easy for a person to read.
 >It is recommended that all subclasses override this method.
 - When practical, the `toString` method should return all of the interesting information contained in the object, self-explanatory.
++++
 - Decide whether to specify the format of the return value (for _value classes_), and clearly document your intentions.
 - Provide programmatic access to all of the information contained in the value returned by `toString`
 
@@ -54,6 +55,7 @@ Chapter 3
 - Object's `clone` method is `protected`
 - All classes that implement `Cloneable` should override clone with a public method whose return type is the class itself.
 - If a class implements `Cloneable`, Object's clone method returns a field-by-field copy of the object; otherwise it throws `CloneNotSupportedException`
++++
 - Copying an object will typically entail creating a new instance of its class, but it may require copying of internal data structures as well.
 - Incompatible with normal use of final fields referring to mutable objects
 - not absolute requirements:
@@ -62,6 +64,7 @@ Chapter 3
 - `(x.clone().getClass() == x.getClass()) == true`
 - `clone().equals(x) == true`
 
++++
 - if you override the clone method in a nonfinal class, you should return an object obtained by invoking clone.
 - it must copy the internals of the object and call clone recursively on mutable objects:
 
@@ -107,6 +110,7 @@ Chapter 3
 		int compareTo(T t);
 
 		}
++++
 - Returns a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.
 - Throws `ClassCastException` if the specified object's type prevents it from being compared to this object.
 
