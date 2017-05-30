@@ -98,13 +98,15 @@ To summarize, Classes should be immutable unless there's a very good reason to m
 mutable. If the class immutability is impractical, limit the mutability as much as possible,
 and make every field final unless there is a good reason to make it nonfinal.
 
-# Item 16: Favor composition over inheritance.
+## Item 16: Favor composition over inheritance.
 
 A common problem with Inheritance is that a subclass needs some details about parent
 class implementation to properly work. A typical example in Java is the forcing of fields
 be _protected_ only for the usage in the subclass. This expands the support that a class
 needs in terms of accessibility: some of the fields proper to an implementation will be
 protected only for the needs of a subclass.
+
+In this sense, inheritance violates encapsulation. Below is an example:
 
 ```java
 // Broken - Inappropriate use of inheritance!
@@ -137,8 +139,51 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
 
 This is an example when the details of an implementation (in this case the size and add
 methods) needs to be known for the subclass to properly work. In this particular example,
-the getAddCount method will return 6 instead of 3 because of double counting in the 
-addCount internal variable: Internally addAll uses .
+there is a double count in the addAll method, because it is an iteration of the add method, which,
+being overriden by InstrumentedHashSet, is incrementing the internal counter of the subclass.
 
-A good approach is to make the super class a member of the extended class, 
+This can be solved using _composition_, a design pattern where instead of extending a class its made
+part of the class as an instance field or passed as argument in a constructor. In this way, the former parent
+class is now part of the functionality added in the subclass and its easier to add new functionality in this way. This
+pattern is also known as a wrapper.
+
+There are items in which a wrapper is not suitable, as the _callback framework_ (objects that return a reference of
+themselves, in which case, a wrapper will hide this reference), and the proper inheritance (a formal is-a relationship).
+If applying inheritance is found that details of the parent class implementation should be provided, means that 
+composition is the option to follow.
+
+## Item 17: Design and document for inheritance or elsse prohibit it.
+
+As shown above, it is crucial for subclasses (in case of inheritance is chosen) to know details of the super class
+implementation to know what methods use an overridable method, in which sequence and so on. This can be specified
+through documentation, and choosing carefully protected methods to provide as API to subclasses. 
+
+In practice, **the only way to test a class designed for inheritance is to write subclasses**. And here applies the fact
+given in the previous item, that the more information needed about super class implementation, the more probabilities
+are that composition is a better option or that the parent class has given incorrect API.
+
+## Item 18: Prefer interfaces to abstract classes.
+
+There are some advantages of using interfaces over abstract classes, as listed below:
+
+* Adding functionality is easier from implementing an interface than extending an abstract class.
+* Mixins definition: Adding optional behaviour, such as Comparable interface, is ideal using interfaces.
+* Breaks the hierarchy on a framework for things that does not fall into a rigid hierarchy.
+* Allows to create wrappers, as for example to refactor the class in Item 16 and use it as a component, preserving
+the fact that the object is a Set implementing the interface.
+* With the new Java 8 features, interfaces can provide skeletal implementation (which is different from a hierarchy).
+This item is the base difference of abstract classes and interfaces. This technique is also known as _simulated
+multiple inheritance_. 
+
+In the previous versions of Java, it was needed to use Abstract classes for skeletal implementations. Adding a method
+in an interface was painful because no default implementation was providen and code was made uncompilable. This is why
+a default method is added now to Java 8 interfaces. 
+
+The only disadvantage of this approach is that an interface once released is kind of impossible to change, and its 
+needed to make it right from the beginning. A workaround for this is the use of traits, single method interfaces (or
+functional interfaces as called in Java 8). But anyway, in inheritance changing an API of protected methods in an 
+abstract class is kind of the same issue as in interfaces.
+
+## Item 19: Use interfaces only to define types.
+
 
