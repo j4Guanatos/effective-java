@@ -186,4 +186,21 @@ abstract class is kind of the same issue as in interfaces.
 
 ## Item 19: Use interfaces only to define types.
 
+An interface should be used **only** to define types. A common antipattern is the Constant interface, when an interface
+is used to define Constants. These should be added to a well used interface or an utility class.
 
+## Item 20: Prefer class hierarchies to tagged classes.
+
+
+
+```java
+// Tagged class - vastly inferior to a class hierarchy!
+class Figure {
+    
+  enum Shape { RECTANGLE, CIRCLE };
+  // Tag field - the shape of this figure
+  final Shape shape;
+  
+  // Fields and constructors only for a certain type!
+  
+``` 
